@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Virgil:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+}
+
+
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 220 20% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 18%;
+
+    --primary: 16 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 20% 94%;
+    --secondary-foreground: 220 20% 18%;
+
+    --muted: 40 15% 92%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 190 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 16 85% 60%;
+
+    --radius: 0.75rem;
+
+    --font-display: 'Nunito', sans-serif;
+    --font-sketch: 'Virgil', cursive, sans-serif;
+
+    --shadow-soft: 0 4px 20px -4px hsl(220 20% 18% / 0.08);
+    --shadow-card: 0 8px 30px -8px hsl(220 20% 18% / 0.12);
+    --shadow-glow: 0 0 40px hsl(16 85% 60% / 0.2);
+  }
+}
+
+@layer base {
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-sketch {
+    font-family: var(--font-sketch);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-draw {
+    animation: draw 1.5s ease-out forwards;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes draw {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+}
+
+@theme {
+  /* Font Families */
+  --font-family-display: 'Nunito', sans-serif;
+  --font-family-sketch: 'Virgil', cursive, sans-serif;
+
+  /* Colors - Light Mode */
+  --color-background: 40 33% 98%;
+  --color-foreground: 220 20% 18%;
+  
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 220 20% 18%;
+  
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 220 20% 18%;
+  
+  --color-primary: 16 85% 60%;
+  --color-primary-foreground: 0 0% 100%;
+  
+  --color-secondary: 40 20% 94%;
+  --color-secondary-foreground: 220 20% 18%;
+  
+  --color-muted: 40 15% 92%;
+  --color-muted-foreground: 220 10% 50%;
+  
+  --color-accent: 190 70% 50%;
+  --color-accent-foreground: 0 0% 100%;
+  
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 210 40% 98%;
+  
+  --color-border: 40 20% 88%;
+  --color-input: 40 20% 88%;
+  --color-ring: 16 85% 60%;
+
+  /* Border Radius */
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -4px hsl(220 20% 18% / 0.08);
+  --shadow-card: 0 8px 30px -8px hsl(220 20% 18% / 0.12);
+  --shadow-glow: 0 0 40px hsl(16 85% 60% / 0.2);
+}
+

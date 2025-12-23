@@ -115,7 +115,7 @@ userRouter.post("/signin", loginValidation, async (req, res) => {
 
     return res.status(200).json({
       message: "successfully signed in",
-      token: token,
+      token: `Bearer ${token}`,
     });
   } catch (err) {
     return res.status(500).json({
@@ -145,7 +145,8 @@ userRouter.post("/room", userAuth, async (req, res) => {
   }
 });
 
-userRouter.get("/chat/:roomId", userAuth, async (req, res) => {
+// TODO: ADd user auth here
+userRouter.get("/chat/:roomId", async (req, res) => {
   try {
     const roomId = req.params.roomId;
 
@@ -162,7 +163,7 @@ userRouter.get("/chat/:roomId", userAuth, async (req, res) => {
       orderBy: {
         id: "desc",
       },
-      take: 20,
+      take: 50,
     });
 
     return res.status(200).json({

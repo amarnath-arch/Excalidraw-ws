@@ -8,11 +8,18 @@ export default function loginValidation(
 ) {
   let success;
 
+  console.log(req.body);
+
   if (req.url == "/signin") {
+    console.log("signIn");
     const parsedBody = signInSchema.safeParse(req.body);
     success = parsedBody.success;
   } else if (req.url == "/signup") {
+    console.log("signUp");
+
     const parsedBody = signUpSchema.safeParse(req.body);
+    console.log("parsedBoy");
+    console.log(parsedBody);
     success = parsedBody.success;
   } else {
     return res.status(404).json({

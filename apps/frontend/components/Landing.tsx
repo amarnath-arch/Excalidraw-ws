@@ -107,7 +107,7 @@ const FeatureCard = ({
   </div>
 );
 
-const SketchIcon = () => (
+export const SketchIcon = () => (
   <svg
     width="32"
     height="32"

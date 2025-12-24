@@ -26,12 +26,10 @@ export default function Auth() {
 
         try {
           const response = await axios.post(
-            `${process.env.BACKEND_URL}/api/v1/user/signin`,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/user/signin`,
             {
-              body: {
-                email: emailInputRef.current.value,
-                password: passwordInputRef.current.value,
-              },
+              email: emailInputRef.current.value,
+              password: passwordInputRef.current.value,
             }
           );
 

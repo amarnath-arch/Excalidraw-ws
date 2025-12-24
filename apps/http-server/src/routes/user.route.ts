@@ -145,8 +145,81 @@ userRouter.post("/room", userAuth, async (req, res) => {
   }
 });
 
+// get roomId from slug
+userRouter.get("/room/:slug", userAuth, async (req, res) => {
+  try {
+    const slug = req.params.slug;
+    const room = await db.room.findFirst({
+      where: {
+        slug: slug,
+      },
+    });
+
+    if (!room) {
+      return res.status(411).json({
+        message: "room Not found",
+      });
+    }
+
+    return res.status(200).json({
+      roomId: room?.id,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
+// get all the rooms created by the user
+// get roomId from slug
+userRouter.get("/rooms", userAuth, async (req, res) => {
+  try {
+    const rooms = await db.room.findMany({
+      where: {
+        adminId: req.userId,
+      },
+    });
+
+    return res.status(200).json({
+      message: "Found rooms",
+      rooms: rooms,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
+userRouter.get("/roomExists/:slug", async (req, res) => {
+  try {
+    const slug = req.params.slug;
+    if (!slug) {
+      res.status(411).json({
+        error: "No slug provided",
+      });
+    }
+
+    const room = await db.room.findFirst({
+      where: {
+        slug: slug,
+      },
+    });
+
+    res.status(200).json({
+      message: room ? "Room already exists" : "Room does not exist",
+      id: room?.id,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
 // TODO: ADd user auth here
-userRouter.get("/chat/:roomId", async (req, res) => {
+userRouter.get("/chat/:roomId", userAuth, async (req, res) => {
   try {
     const roomId = req.params.roomId;
 

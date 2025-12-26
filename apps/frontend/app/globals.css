@@ -122,6 +122,9 @@
 }
 
 @theme {
+  --color-toolbar-background :#e0dfff;
+
+
   /* Font Families */
   --font-family-display: 'Nunito', sans-serif;
   --font-family-sketch: 'Virgil', cursive, sans-serif;
